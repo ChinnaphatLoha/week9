@@ -1,8 +1,6 @@
 class Todo {
-  static lastId = 0;
-
-  constructor(description) {
-    this.id = ++Todo.lastId;
+  constructor(id, description) {
+    this.id = id;
     this.description = description;
   }
 
@@ -20,24 +18,21 @@ class Todo {
 
 const TodoManagement = () => {
   let todos = [];
+  let currentId = 0;
 
   const addTodo = (desc) => {
-    const todo = new Todo(desc);
-    todos.push(todo.getTodo());
+    const todo = {
+      id: ++currentId,
+      description: desc,
+    };
+    todos.push(todo);
     return todos.length;
   };
 
-  const findTodo = (searchId) => 
-    todos.find((todo) => {
-      console.log(todo.id, searchId);
-      return todo.id === searchId
-    });
+  const findTodo = (searchId) => todos.find((todo) => todo.id === searchId);
 
   const findIndexTodo = (searchId) =>
-    todos.findIndex((todo) => {
-      console.log(todo.id, searchId);
-      return todo.id === searchId;
-    });
+    todos.findIndex((todo) => todo.id === searchId);
 
   const removeTodo = (searchId) => {
     todos = todos.filter((todo) => todo.id !== searchId);
