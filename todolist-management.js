@@ -21,12 +21,8 @@ const TodoManagement = () => {
   let currentId = 0;
 
   const addTodo = (desc) => {
-    const todo = {
-      id: ++currentId,
-      description: desc,
-    };
-    todos.push(todo);
-    return todos.length;
+    const todo = new Todo(++currentId, desc).getTodo();
+    return todos.push(todo);
   };
 
   const findTodo = (searchId) => todos.find((todo) => todo.id === searchId);
@@ -57,4 +53,4 @@ const TodoManagement = () => {
   };
 };
 
-exports.TodoManagement = TodoManagement;
+module.exports = { TodoManagement, Todo };
