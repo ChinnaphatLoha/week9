@@ -30,8 +30,8 @@ const TodoManagement = () => {
   const findIndexTodo = (searchId) =>
     todos.findIndex((todo) => todo.id === searchId);
 
-  const removeTodo = (searchId) => {
-    todos = todos.filter((todo) => todo.id !== searchId);
+  const removeTodo = (removeId) => {
+    todos = todos.filter((todo) => todo.id !== removeId);
   };
 
   const setDescription = (searchId, newDescription) => {
